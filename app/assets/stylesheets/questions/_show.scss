@@ -1,0 +1,235 @@
+.questions_show {
+    background: #F7F7F7;
+    height: 100%;
+}
+
+.question {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    opacity: 1
+}
+
+.question ul,.question ol {
+    padding-left: 20px
+}
+
+.question ul {
+    list-style: inherit
+}
+
+.question a {
+    color: #48A2DF
+}
+
+.question a:hover {
+    color: #1d6ea4
+}
+
+.question-backlinks .btn {
+    color: #CECDCB;
+    background: transparent;
+    border: 2px solid #CECDCB;
+    border-radius: 9px
+}
+
+.question-header {
+    padding: 15px 20px 5px 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-left: 8px solid #F5F3EF
+}
+
+.question-header .number {
+    color: #D2D2D2
+}
+
+.question-header .content h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    font-family: proximaNova;
+    line-height: 1.35;
+    color: #797572;
+    margin-bottom: 10px
+}
+
+.question-header .content pre {
+    margin-top: 15px;
+    white-space: pre-wrap
+}
+
+.question-choice {
+    position: relative;
+    padding: 30px 20px;
+    background-color: white;
+    color: rgba(0,0,0,0.6);
+    border: 2px solid #EDECEA;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    -webkit-transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1)
+}
+
+.question-choice:hover {
+    border-color: #cecdcb
+}
+
+.question-choice label {
+    outline: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-weight: 100
+}
+
+.question-choice label:hover {
+    cursor: pointer
+}
+
+.question-choice .number {
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    opacity: 1;
+    border-radius: 50%;
+    color: white;
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    bottom: 0;
+    margin: auto;
+    height: 30px;
+    width: 30px
+}
+
+.question-choice .number-right {
+    border: 1px solid #2ecc71;
+    color: #2ecc71
+}
+
+.question-choice .number-wrong {
+    border: 1px solid #EE5F5B;
+    color: #EE5F5B
+}
+
+.question-choice .number span {
+    display: block;
+    position: absolute;
+    height: 15px;
+    font-size: 15px;
+    line-height: 1;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    bottom: 0
+}
+
+.question-choice .content {
+    margin-left: 40px;
+    margin-top: 10px;
+    color: #363636
+}
+
+.question-choice .content a {
+    position: relative;
+    z-index: 2
+}
+
+.question-choice:hover {
+    cursor: pointer;
+    background-color: white
+}
+
+.question-choice:last-child {
+    margin-bottom: 50px
+}
+
+.question-choice.selected {
+    background: white;
+    border-color: #cecdcb;
+    opacity: 1
+}
+
+.question-choice.selected .number {
+    background: #565656;
+    color: white;
+    border: none
+}
+
+.question-choice.selected .number {
+    opacity: 1
+}
+
+.question-links {
+    position: relative;
+    height: 80px;
+    border-radius: 0px 0px 8px 8px
+}
+
+.question-links p {
+    position: absolute;
+    display: block;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: rgba(126,125,125,0.6);
+    font-weight: 600;
+    height: 20px
+}
+
+.question-links .nav {
+    position: relative;
+    display: block;
+    top: 0;
+    bottom: 0
+}
+
+.question-links .nav .btn {
+    top: 0;
+    bottom: 0;
+    height: 42px;
+    margin: auto;
+    background: rgba(200,200,200,0.1);
+    color: #777777;
+    border-color: #777777;
+    border-width: 2px;
+    opacity: 0.4
+}
+
+.question-links .nav .btn:last-child {
+    float: left;
+    margin-right: 10px
+}
+
+.question-links .nav .btn:last-child:hover {
+    opacity: 1
+}
+
+.question-links .nav .btn.btn-next-question {
+    display: inline-block;
+    right: 0px;
+    color: #2ecc71;
+    border-color: #2ecc71;
+    background: transparent;
+    border-width: 2px;
+    float: right;
+    opacity: 1;
+    -webkit-transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+    transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1)
+}
+
+.question-links .nav .btn.btn-next-question.visible {
+    visibility: visible;
+    opacity: 0.8
+}
+
+.question-links .nav .btn.btn-next-question:hover {
+    opacity: 1
+}

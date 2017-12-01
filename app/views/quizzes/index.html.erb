@@ -4,7 +4,7 @@
       <div class="col-xs-3">
         <h1><%= quiz.id %></h1>
         <h3><%= quiz.name %></h3>
-        <%= link_to "show", question_path(quiz.questions.first) %>
+        <%= link_to "Take the Quiz", question_path(quiz.questions.first) %>
       </div>
     <% end %>
   </div>

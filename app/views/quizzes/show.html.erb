@@ -1,2 +1,4 @@
-<h1>Quizzes#show</h1>
-<p>Find me in app/views/quizzes/show.html.erb</p>
+<h1>You just did <%= @quiz.name %> !</h1>
+<%= link_to question_path(@quiz.questions.first), class: "btn btn-next-question" do  %>
+  Je refais! <i class="fa fa-arrow-right"></i>
+<% end %>

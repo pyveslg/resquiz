@@ -1,0 +1,47 @@
+<div class="questions_show">
+  <div class="container-fluid question animated">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+        <div class="question-header">
+          <div class="number">
+            Question <%= @quiz.questions.find_index(@question) + 1 %> / <%= @quiz.questions.length %>
+          </div>
+          <div class="content">
+            <h2><%= @question.name %></h2>
+          </div>
+        </div>
+        <p class="hidden-sm hidden-xs" style="color:#bbb;">Sélectionnez la réponse qui vous semble la plus juste :</p>
+
+        <% @question.options.each do |option| %>
+          <div class="question-choice">
+            <div class="number">
+              <span><%= @question.options.find_index(option) + 1 %></span>
+            </div>
+            <div class="content">
+              <span>
+                <%= option.name %>
+              </span>
+            </div>
+            <label>
+              <input type="radio" name="answer[choice_id]" value="33" required class="hidden">
+            </label>
+          </div>
+        <% end %>
+        <div class="question-links">
+          <div class="nav">
+            <% if @question.last? %>
+              <%= link_to quiz_path(@question.quiz), class: "btn btn-next-question" do  %>
+                Voir les résultats
+              <% end %>
+            <% else %>
+              <%= link_to question_path(@question.next_id), class: "btn btn-next-question" do  %>
+                Question suivante <i class="fa fa-arrow-right"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
