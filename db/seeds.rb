@@ -28,7 +28,6 @@ ymls.each_with_index do |yml, i|
   quizz_content = open(quizz_url).read
   quizz = YAML.load(quizz_content)
 
-
   quiz = Quiz.create!
   quiz.slug = quizz["slug"]
   quiz.name = quizz["name"]
