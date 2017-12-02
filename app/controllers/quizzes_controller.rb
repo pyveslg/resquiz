@@ -8,7 +8,7 @@ class QuizzesController < ApplicationController
   def show
     if @quiz.played?
       if @quiz.finished?
-        result
+        @result = @quiz.result
       else
         delete_answers
       end
@@ -25,15 +25,6 @@ class QuizzesController < ApplicationController
 
   def find_quiz
     @quiz = Quiz.find(params[:id])
-  end
-
-  def result
-    sum = 0
-    @quiz.answers.each do |answer|
-      sum += answer.score
-    end
-    total = sum.fdiv(@quiz.answers.size) * 100
-    @result = total.ceil
   end
 
   def delete_answers

@@ -4,7 +4,12 @@
       <div class="col-xs-3">
         <h1><%= quiz.id %></h1>
         <h3><%= quiz.name %></h3>
-        <%= link_to "Take the Quiz", question_path(quiz.questions.first) %>
+        <% if quiz.finished? %>
+          <p>You already did it! Your score is <%= quiz.result %> %</p>
+          <%= link_to "Retake the Quiz", retake_quiz_path(quiz) %>
+        <% else %>
+          <%= link_to "Take the Quiz", question_path(quiz.questions.first) %>
+        <% end %>
       </div>
     <% end %>
   </div>

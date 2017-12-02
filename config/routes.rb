@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :quizzes do
     member do
       get 'retake', to: "quizzes#retake"
+    end
   end
   resources :questions, only: [:show]
   resources :questions do

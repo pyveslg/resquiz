@@ -12,4 +12,13 @@ class Quiz < ApplicationRecord
   def finished?
     self.answers.length == self.questions.length ? true : false
   end
+
+  def result
+    sum = 0
+    self.answers.each do |answer|
+      sum += answer.score
+    end
+    total = sum.fdiv(self.answers.size) * 100
+    return total.ceil
+  end
 end
