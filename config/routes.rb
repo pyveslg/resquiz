@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   resources :quizzes, only: [:index, :show]
   resources :quizzes do
     member do
-      get 'retake', to: "quizzes#delete_answers"
-    end
+      get 'retake', to: "quizzes#retake"
   end
   resources :questions, only: [:show]
   resources :questions do
