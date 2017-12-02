@@ -11,41 +11,42 @@
           </div>
         </div>
         <p class="hidden-sm hidden-xs" style="color:#bbb;">Sélectionnez la réponse qui vous semble la plus juste :</p>
+        <%= simple_form_for [@question, Answer.new] do |f| %>
+          <% @question.options.each do |option| %>
+            <div class="question-choice">
+              <div class="number">
+                <span><%= @question.options.find_index(option) + 1 %></span>
+              </div>
+              <div class="content">
+                <span>
+                  <%= option.name %>
+                </span>
+              </div>
+              <label>
+                <input type="radio" name="answer[choice_id]" value="<%= option.id %>" required class="hidden">
+              </label>
+            </div>
+          <% end %>
+          <div class="question-links">
+            <div class="nav">
 
-        <% @question.options.each do |option| %>
-          <div class="question-choice">
-            <div class="number">
-              <span><%= @question.options.find_index(option) + 1 %></span>
+              <% if @question.last? %>
+                <%= link_to quiz_path(@question.quiz), class: "btn btn-next-question" do  %>
+                  Voir les résultats
+                <% end %>
+              <% else %>
+                <%= f.button :button, class: "btn btn-next-question" do %>
+                  Question suivante <i class="fa fa-arrow-right"></i>
+                <% end %>
+              <% end %>
+              <% if !@question.first?  %>
+                <%= link_to question_path(@question.previous_id), class: "btn" do %>
+                  <i class="fa fa-arrow-left"></i> Précédent
+                <% end %>
+              <% end %>
             </div>
-            <div class="content">
-              <span>
-                <%= option.name %>
-              </span>
-            </div>
-            <label>
-              <input type="radio" name="answer[choice_id]" value="33" required class="hidden">
-            </label>
           </div>
         <% end %>
-        <div class="question-links">
-          <div class="nav">
-            <% if @question.last? %>
-              <%= link_to quiz_path(@question.quiz), class: "btn btn-next-question" do  %>
-                Voir les résultats
-              <% end %>
-            <% else %>
-              <%= link_to question_path(@question.next_id), class: "btn btn-next-question" do  %>
-                Question suivante <i class="fa fa-arrow-right"></i>
-              <% end %>
-            <% end %>
-            <% if !@question.first?  %>
-              <%= link_to question_path(@question.previous_id), class: "btn" do %>
-                <i class="fa fa-arrow-left"></i> Précédent
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
