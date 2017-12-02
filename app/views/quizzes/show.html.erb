@@ -1,5 +1,60 @@
-<h1>You just did <%= @quiz.name %> !</h1>
-<h3>Your score is <%= @result %>% !</h3>
-<%= link_to retake_quiz_path, class: "btn btn-next-question" do  %>
-  Je refais! <i class="fa fa-arrow-right"></i>
-<% end %>
+<div class="quizzes_show">
+  <div class='wrap'>
+    <div class="page-content">
+      <div class="container vertical-padded quiz animated">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div>
+              <div class="progress-radial progress-radial-perfect progress-perfect-<%= @result %>">
+                <div class="overlay"><%= @result %>%</div>
+              </div>
+            </div>
+            <div class="quiz-controls text-center">
+              <%= link_to retake_quiz_path, class: "btn" do  %>
+                Refaire le quiz</i>
+              <% end %>
+              <a class="btn" href="/">Retour au cours</a>
+              <a class="btn btn-success" href="/">Flashcards</a>
+            </div>
+            <p class="text-muted text-center">Voici tous les sujets que vous devriez réviser...</p>
+
+            <% @incorrect_answers.each do |answer| %>
+              <div class="row">
+                <div class="question-header">
+                  <div class="content">
+                    <h2><%= answer.question.name %></h2>
+                  </div>
+                </div>
+                <div class="question-choice">
+                  <div class="number number-wrong">
+                    <span><i class="fa fa-remove"></i></span>
+                  </div>
+                  <div class="content">
+                    <p><%= Option.find(answer.choice_id).name %></p>
+                  </div>
+                </div>
+                <div class="question-choice">
+                  <div class="content">
+                    <div class="number number-right">
+                      <span><i class="fa fa-check"></i></span>
+                    </div>
+                    <% correct_answer = answer.question.correct_answer %>
+                    <p><%= correct_answer.name %></p>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+            <div class="quiz-controls text-center">
+              <%= link_to retake_quiz_path, class: "btn" do  %>
+                Refaire le quiz</i>
+              <% end %>
+              <a class="btn" href="/">Retour au cours</a>
+              <a class="btn btn-success" href="/">Flashcards</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

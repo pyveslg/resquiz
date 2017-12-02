@@ -21,4 +21,15 @@ class Quiz < ApplicationRecord
     total = sum.fdiv(self.answers.size) * 100
     return total.ceil
   end
+
+  def incorrect_answers
+    incorrect_answers = []
+    self.answers.each do |answer|
+      if answer.score == 0
+        incorrect_answers.push(answer)
+      end
+    end
+    return incorrect_answers
+  end
+
 end

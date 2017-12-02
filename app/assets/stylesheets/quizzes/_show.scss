@@ -1,0 +1,119 @@
+.quizzes_show .sharer ul {
+    padding-left: 0
+}
+
+.quizzes_show .sharer li {
+    width: 100%;
+    text-align: center
+}
+
+.quiz ul,.quiz ol {
+    padding-left: 20px
+}
+
+.quiz ul {
+    list-style: inherit
+}
+
+.quiz .congrats-message {
+    font-size: 37px;
+    color: #67635d
+}
+
+.quiz .congrats-message p {
+    font-size: 20px;
+    color: #dbd8d5
+}
+
+.quiz .congrats-message .btn-container {
+    margin-bottom: 50px
+}
+
+.quiz table {
+    display: inline-block
+}
+
+.quiz td {
+    border: 1px solid #e6e6e6;
+    padding: 25px;
+    background: white
+}
+
+.quiz-controls {
+    padding: 0 0 80px 0
+}
+
+.quiz .progress-radial {
+    margin-bottom: 20px
+}
+
+.progress-radial {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #EEEEEE
+}
+
+.progress-radial-bad {
+    background-color: #EE5F5B
+}
+
+.progress-radial-bad .overlay {
+    color: #EE5F5B
+}
+
+.progress-radial-avg {
+    background-color: #E67E22
+}
+
+.progress-radial-avg .overlay {
+    color: #E67E22
+}
+
+.progress-radial-good {
+    background-color: #FDB631
+}
+
+.progress-radial-good .overlay {
+    color: #FDB631
+}
+
+.progress-radial-perfect {
+    background-color: #2ecc71
+}
+
+.progress-radial-perfect .overlay {
+    color: #2ecc71
+}
+
+.progress-radial .overlay {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+    overflow: hidden;
+    background: white
+}
+
+.progress-radial .overlay img {
+    width: 60px;
+    margin-top: -5px;
+    margin-left: -5px
+}
+
+.progress-radial.progress-nil {
+    background-color: #eeeeee;
+    opacity: 0.6
+}
+

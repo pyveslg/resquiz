@@ -22,4 +22,8 @@ class Question < ApplicationRecord
   def last?
     self.next_id.nil?
   end
+
+  def correct_answer
+    Option.where("question_id = ? and correct", self.id).first
+  end
 end

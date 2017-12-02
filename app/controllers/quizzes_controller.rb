@@ -9,6 +9,7 @@ class QuizzesController < ApplicationController
     if @quiz.played?
       if @quiz.finished?
         @result = @quiz.result
+        @incorrect_answers = @quiz.incorrect_answers
       else
         delete_answers
       end
