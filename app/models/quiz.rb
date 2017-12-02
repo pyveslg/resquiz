@@ -8,4 +8,8 @@ class Quiz < ApplicationRecord
   def played?
     !self.answers.empty?
   end
+
+  def finished?
+    self.answers.length == self.questions.length ? true : false
+  end
 end

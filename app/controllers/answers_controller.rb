@@ -1,22 +1,17 @@
 class AnswersController < ApplicationController
 
-
   def create
     @answer = Answer.new(answer_params)
     @answer.question = Question.find(params[:question_id])
     scoring
-    binding.pry
     @answer.save
     @question = @answer.question
-    redirect_to question_path(@question.next_id)
+    if @question.last?
+      redirect_to quiz_path(@question.quiz)
+    else
+      redirect_to question_path(@question.next_id)
+    end
   end
-
-  def update
-  end
-
-  def destroy
-  end
-
 
   private
 

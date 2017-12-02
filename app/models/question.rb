@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :quiz
   has_many :options, dependent: :destroy
-  has_one :answer
+  has_many :answers, dependent: :destroy
 
   ## RENDER FOLLOWING QUESTION ID OR NIL IF LAST
   def next_id

@@ -29,16 +29,14 @@
           <% end %>
           <div class="question-links">
             <div class="nav">
-
-              <% if @question.last? %>
-                <%= link_to quiz_path(@question.quiz), class: "btn btn-next-question" do  %>
+              <%= f.button :button, class: "btn btn-next-question" do %>
+                <% if @question.last? %>
                   Voir les résultats
-                <% end %>
-              <% else %>
-                <%= f.button :button, class: "btn btn-next-question" do %>
+                <% else %>
                   Question suivante <i class="fa fa-arrow-right"></i>
                 <% end %>
               <% end %>
+
               <% if !@question.first?  %>
                 <%= link_to question_path(@question.previous_id), class: "btn" do %>
                   <i class="fa fa-arrow-left"></i> Précédent
