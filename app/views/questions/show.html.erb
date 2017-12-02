@@ -38,6 +38,11 @@
                 Question suivante <i class="fa fa-arrow-right"></i>
               <% end %>
             <% end %>
+            <% if !@question.first?  %>
+              <%= link_to question_path(@question.previous_id), class: "btn" do %>
+                <i class="fa fa-arrow-left"></i> Précédent
+              <% end %>
+            <% end %>
           </div>
         </div>
 
