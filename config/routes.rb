@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root to: 'quizzes#index'
+
+  resources :decks, only: [:index, :show]
   resources :quizzes, only: [:index, :show]
   resources :quizzes do
     member do

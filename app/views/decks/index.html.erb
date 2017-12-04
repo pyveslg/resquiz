@@ -1,0 +1,10 @@
+<h1><%= @decks.length %></h1>
+<% @decks.each do |deck| %>
+  <p>Name : <%= deck.name %></p>
+  <p>Slug : <%= deck.slug %></p>
+  <p>Path : <%= deck.path %></p>
+  <p>Cards : <%= deck.cards %></p>
+<% end %>
+
+
+
