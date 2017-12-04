@@ -220,7 +220,8 @@
     background: transparent;
     border-width: 2px;
     float: right;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
     -webkit-transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
     transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1)
 }

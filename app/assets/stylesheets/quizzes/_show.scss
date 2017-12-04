@@ -57,35 +57,35 @@
 }
 
 .progress-radial-bad {
-    background-color: #EE5F5B
+    background-color: $bad
 }
 
 .progress-radial-bad .overlay {
-    color: #EE5F5B
+    color: $bad
 }
 
 .progress-radial-avg {
-    background-color: #E67E22
+    background-color: $avg
 }
 
 .progress-radial-avg .overlay {
-    color: #E67E22
+    color: $avg
 }
 
 .progress-radial-good {
-    background-color: #FDB631
+    background-color: $good
 }
 
 .progress-radial-good .overlay {
-    color: #FDB631
+    color: $good
 }
 
 .progress-radial-perfect {
-    background-color: #2ecc71
+    background-color: $perfect
 }
 
 .progress-radial-perfect .overlay {
-    color: #2ecc71
+    color: $perfect
 }
 
 .progress-radial .overlay {
@@ -117,3 +117,50 @@
     opacity: 0.6
 }
 
+$bordcolor: #e1e1e1;
+
+$loops: 100;
+$increment: 360 / $loops;
+$half: round($loops / 2);
+@for $i from 0 through $loops {
+  .progress-bad-#{$i} {
+    @if $i < $half {
+      $nextdeg: 90deg + ( $increment * $i );
+      background-image: linear-gradient(90deg, $bordcolor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $bad 50%, $bordcolor 50%, $bordcolor);
+    }
+    @else {
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+      background-image: linear-gradient($nextdeg, $bad 50%, transparent 50%, transparent), linear-gradient(270deg, $bad 50%, $bordcolor 50%, $bordcolor);
+    }
+  }
+  .progress-avg-#{$i} {
+    @if $i < $half {
+      $nextdeg: 90deg + ( $increment * $i );
+      background-image: linear-gradient(90deg, $bordcolor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $avg 50%, $bordcolor 50%, $bordcolor);
+    }
+    @else {
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+      background-image: linear-gradient($nextdeg, $avg 50%, transparent 50%, transparent), linear-gradient(270deg, $avg 50%, $bordcolor 50%, $bordcolor);
+    }
+  }
+  .progress-good-#{$i} {
+    @if $i < $half {
+      $nextdeg: 90deg + ( $increment * $i );
+      background-image: linear-gradient(90deg, $bordcolor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $good 50%, $bordcolor 50%, $bordcolor);
+    }
+    @else {
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+      background-image: linear-gradient($nextdeg, $good 50%, transparent 50%, transparent), linear-gradient(270deg, $good 50%, $bordcolor 50%, $bordcolor);
+    }
+  }
+  .progress-perfect-#{$i} {
+    @if $i < $half {
+      $nextdeg: 90deg + ( $increment * $i );
+      background-image: linear-gradient(90deg, $bordcolor 50%, transparent 50%, transparent), linear-gradient($nextdeg, $perfect 50%, $bordcolor 50%, $bordcolor);
+    }
+    @else {
+      $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+      background-image: linear-gradient($nextdeg, $perfect 50%, transparent 50%, transparent), linear-gradient(270deg, $perfect 50%, $bordcolor 50%, $bordcolor);
+    }
+  }
+}

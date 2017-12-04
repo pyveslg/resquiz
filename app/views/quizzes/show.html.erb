@@ -5,7 +5,15 @@
         <div class="row">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">
             <div>
-              <div class="progress-radial progress-radial-perfect progress-perfect-<%= @result %>">
+              <% if @result < 50 %>
+                <div class="progress-radial progress-radial-bad progress-bad-<%= @result %>">
+              <% elsif @result >= 50 && @result < 80 %>
+                <div class="progress-radial progress-radial-avg progress-avg-<%= @result %>">
+              <% elsif @result >= 80 && @result < 100 %>
+                <div class="progress-radial progress-radial-good progress-good-<%= @result %>">
+              <% else %>
+                <div class="progress-radial progress-radial-perfect progress-perfect-<%= @result %>">
+              <% end %>
                 <div class="overlay"><%= @result %>%</div>
               </div>
             </div>
