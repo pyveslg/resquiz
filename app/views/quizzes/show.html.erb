@@ -7,16 +7,40 @@
             <div>
               <% if @result < 50 %>
                 <div class="progress-radial progress-radial-bad progress-bad-<%= @result %>">
+                  <div class="overlay"><%= @result %>%</div>
+                </div>
+                <div class="congrats-message text-center">
+                  <h3>Aïe, aïe, aïe... Il y a encore du boulot!</h3>
+                  <p>Mais il ne faut désespérer! Un petit week-end à Paris devrait vous aider à corriger ça :)</p>
+                </div>
               <% elsif @result >= 50 && @result < 80 %>
                 <div class="progress-radial progress-radial-avg progress-avg-<%= @result %>">
+                  <div class="overlay"><%= @result %>%</div>
+                </div>
+                <div class="congrats-message text-center">
+                  <h3>Pas mal, pas mal!</h3>
+                  <p>Mais une vérification sur le terrain vous permettrait indubitablement d'améliorer ce score...! :)</p>
+                </div>
               <% elsif @result >= 80 && @result < 100 %>
                 <div class="progress-radial progress-radial-good progress-good-<%= @result %>">
+                  <div class="overlay"><%= @result %>%</div>
+                </div>
+                <div class="congrats-message text-center">
+                  <h3>Bravo! C'est un très bon score!</h3>
+                  <p>Vous venez vérifier sur le terrain les réponses qui vous manquent ? :)</p>
+                </div>
               <% else %>
                 <div class="progress-radial progress-radial-perfect progress-perfect-<%= @result %>">
+                  <div class="overlay"><%= @result %>%</div>
+                </div>
+                <div class="congrats-message text-center">
+                  <h3>Wahou! Impressionnant! Félicitations!</h3>
+                  <p>Mais cela ne vous empêche pas de venir vérifier toutes ces réponses ensemble sur le terrain :)</p>
+                </div>
               <% end %>
-                <div class="overlay"><%= @result %>%</div>
-              </div>
+
             </div>
+
             <div class="quiz-controls text-center">
               <%= link_to retake_quiz_path, class: "btn" do  %>
                 Refaire le quiz</i>
