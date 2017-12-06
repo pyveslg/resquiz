@@ -2,7 +2,14 @@ Rails.application.routes.draw do
 
   root to: 'quizzes#index'
 
-  resources :decks, only: [:index, :show]
+  resources :decks, param: :path, only: [:index, :show] do
+    member do
+      get 'replay', to: "decks#replay"
+    end
+  end
+  resources :flashcards, param: :slug, only: [:show]
+  resources :played_cards, only: [:create]
+
   resources :quizzes, only: [:index, :show]
   resources :quizzes do
     member do

@@ -30,6 +30,7 @@ class SetDeck
     total
   end
 
+
   class Deck
     def initialize(deck_slug, deck_name, path, cards)
       @deck_slug = deck_slug
@@ -53,12 +54,79 @@ class SetDeck
     def cards
       @cards
     end
+
+    def set_card
+      cards = []
+      self.cards.each_with_index do |card, index|
+        cards.push(Card.new(index, self.path, card["slug"], card["key_concept"], card["front"], card["back"]))
+      end
+      return cards
+    end
+
+    def find(card_slug)
+      self.set_card.find {|card| card.slug == card_slug}
+    end
+
+    def played_cards
+      @played_cards = PlayedCard.all.where(deck_path: self.path)
+    end
+
+    def unplayed_cards
+      @unplayed_cards = self.set_card
+      self.played_cards.each do |card|
+        @unplayed_cards.each do |carte|
+          if card.card_slug == carte.slug
+            @unplayed_cards.delete(carte)
+          end
+        end
+      end
+      return @unplayed_cards
+    end
+
+    def delete_played_cards
+      self.played_cards.destroy_all
+    end
+
+    class Card
+      def initialize(index, deck_path, slug, key_concept, front, back)
+        @index = index.to_i
+        @deck_path = deck_path
+        @slug = slug
+        @key_concept = key_concept
+        @front = front
+        @back = back
+      end
+
+      def index
+        @index
+      end
+      def slug
+        @slug
+      end
+
+      def key_concept
+        @key_concept
+      end
+
+      def front
+        @front
+      end
+
+      def back
+        @back
+      end
+
+      def deck_path
+        @deck_path
+      end
+
+    end
   end
 
-  def deck(slug)
+
+  def deck(path)
     file_content.each do |file|
-      file["deck_slug"]
-      return Deck.new(file["deck_slug"], file["deck_name"], file["path"], file["cards"]) if file["deck_slug"].include?(slug)
+      return Deck.new(file["deck_slug"], file["deck_name"], file["path"], file["cards"]) if file["path"].include?(path)
     end
     nil
   end

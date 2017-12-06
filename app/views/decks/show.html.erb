@@ -1,2 +1,30 @@
-<h1>Decks#show</h1>
-<p><%= @deck.name %></p>
+
+<h1><%= @deck.name %></h1>
+<% if @next_card.nil? %>
+<h2>Finished !</h2>
+<% end %>
+<p>Total number of cards : <%= @cards.length  %></p>
+
+<h2>Played Cards | <%= @played_cards.length %></h2>
+<ul>
+  <% @played_cards.each do |card| %>
+    <li><%= card.card_slug %></li>
+  <% end %>
+</ul>
+
+<h2>Unplayed Cards | <%= @unplayed_cards.size%></h2>
+<ul>
+  <% @unplayed_cards.each do |card| %>
+    <li><%= card.slug %></li>
+  <% end %>
+</ul>
+
+<% if !@next_card.nil? %>
+  <% if @played_cards.empty?  %>
+    <%= link_to "Play Flashcard!", flashcard_path(slug: @cards.first.slug, path: @cards.first.deck_path) %>
+  <% else %>
+    <%= link_to "Continue Flashcard!", flashcard_path(slug: @next_card.slug, path: @next_card.deck_path) %>
+  <% end %>
+<% end %>
+
+<%= link_to "Replay Flashcard!", replay_deck_path %>

@@ -3,7 +3,7 @@
   <p>Name : <%= deck.name %></p>
   <p>Slug : <%= deck.slug %></p>
   <p>Path : <%= deck.path %></p>
-  <p>Cards : <%= deck.cards %></p>
+  <%= link_to "Show", deck_path(deck.path)  %>
 <% end %>
 
 
