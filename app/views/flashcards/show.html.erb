@@ -1,5 +1,112 @@
-<p><%= @selected_card.front %></p>
-<p><%= @selected_card.index %></p>
+<div id="flashcards-container" class="flex-container-column">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= link_to decks_path, class:"btn btn-default btn-left" do  %>
+          <i class="mdi mdi-chevron-left"></i> Playboard
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="deck-stats">
+          <div class="deck-stats-message">
+            <div class="pull-right reset-deck-link">
+              <i class="fa fa-repeat"></i>
+              <%= link_to "Replay all", replay_deck_path(@deck.path), data: { confirm: "This will reset all your flashcards in this deck. Are you sure?", method: "delete" }, rel: "nofollow" %>
+            </div>
+
+            <p>You have mastered all <strong>21</strong> cards in this deck! 🎉</p>
+          </div>
+
+          <div class="deck-stats-progress">
+            <div class="progress">
+              <div class="mastered-progress-bar" style="width: 100.0%;"></div>
+              <div class="not-mastered-progress-bar" style="width: 0.0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="flashcard-container">
+          <div id="flashcard">
+            <div class="cardSlideIn">
+              <div class="cardSpinner"></div>
+              <div class="flashcard-game-card-front">
+                <div class="flashcard-game-card bg-white">
+                  <div class="flashcard-game-card-header">
+                    <div class="flashcard-game-card-title">
+
+                      <h4><%= @deck.name %></h4>
+                    </div>
+                    <div class="flashcard-game-card-controls">
+                    </div>
+                  </div>
+                  <div class="flashcard-game-card-content">
+                    <%= raw @selected_card.front %>
+                    <textarea class="form-control" id="user-guess-text-area" autofocus="" rows="4" placeholder="Enter your answer here (alt + enter to flip card)"></textarea>
+                    <a class="btn btn-default flip-button" href="javascript:void(0)">
+                      <i class="mdi mdi-refresh"></i> flip card
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flashcard-game-card-back invisible">
+                  <div class="flashcard-game-card bg-white">
+                    <div class="flashcard-game-card-header">
+                      <div class="flashcard-game-card-title">
+                        <h4><%= @deck.name %></h4>
+                      </div>
+                      <div class="flashcard-game-card-controls">
+                        <a data-toggle="modal" data-target="#issueModal" data-placement="top" title="" id="reportBugAction" class="icon-link" href="#" data-original-title="Report a bug">
+                          <i class="mdi mdi-bug"></i>
+                        </a>
+                        <a class="bookmark-action icon-link bookmark-action-sort_by" data-toggle="tooltip" data-placement="top" title="" data-remote="true" rel="nofollow" data-method="post" href="/camps/70/bookmarked_cards?bookmarked_card%5Bcard_slug%5D=sort_by&amp;bookmarked_card%5Bpath%5D=01-Ruby%2F03-Iterators-Blocks" data-original-title="Add to bookmarks">
+                          <i class="mdi mdi-bookmark-outline"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="flashcard-game-card-content">
+                      <%= raw @selected_card.back %>
+                      <a class="btn btn-default flip-button" href="javascript:void(0)">
+                        <i class="mdi mdi-refresh"></i> flip card
+                      </a>
+                    </div>
+                  </div>
+                  <div class="flashcard-game-card-guess">
+                    <p><strong>What you guessed: </strong></p>
+                    <p id="user-guess-render"></p>
+                  </div>
+                  <div class="flashcard-game-card-action-buttons">
+                    <form class="simple_form form-red" novalidate="novalidate" action="/camps/70/played_cards" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+                      <div class="form-group hidden played_card_card_slug"><input class="form-control hidden" value="sort_by" type="hidden" name="played_card[card_slug]" id="played_card_card_slug"></div>
+                      <div class="form-group hidden played_card_guess"><input class="form-control hidden" type="hidden" name="played_card[guess]" id="played_card_guess"></div>
+                      <div class="form-group hidden played_card_path"><input class="form-control hidden" value="01-Ruby/03-Iterators-Blocks" type="hidden" name="played_card[path]" id="played_card_path"></div>
+                      <div class="form-group hidden played_card_mastered"><input class="form-control hidden" value="false" type="hidden" name="played_card[mastered]" id="played_card_mastered"></div>
+                      <input type="submit" name="commit" value="← Did not know" id="played-card-submit" class="btn btn-red flashcard-submit" data-disable-with="← Did not know">
+                    </form>
+                    <form class="simple_form form-green" novalidate="novalidate" action="/camps/70/played_cards" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+                      <div class="form-group hidden played_card_card_slug"><input class="form-control hidden" value="sort_by" type="hidden" name="played_card[card_slug]" id="played_card_card_slug"></div>
+                      <div class="form-group hidden played_card_guess"><input class="form-control hidden" type="hidden" name="played_card[guess]" id="played_card_guess"></div>
+                      <div class="form-group hidden played_card_path"><input class="form-control hidden" value="01-Ruby/03-Iterators-Blocks" type="hidden" name="played_card[path]" id="played_card_path"></div>
+                      <div class="form-group hidden played_card_mastered"><input class="form-control hidden" value="true" type="hidden" name="played_card[mastered]" id="played_card_mastered"></div>
+                      <input type="submit" name="commit" value="I knew it! →" id="played-card-submit" class="btn btn-green flashcard-submit" data-disable-with="I knew it! →">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% if @played_card.nil? %>
   <%= form_for(PlayedCard.new) do |f| %>
@@ -13,5 +120,3 @@
   <p>Already played! Choice was <%= @played_card.choice %> </p>
   <% end %>
 <% end %>
-
-<%= link_to "Return to Deck", decks_path %>

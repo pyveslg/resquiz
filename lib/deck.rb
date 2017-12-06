@@ -119,15 +119,34 @@ class SetDeck
       end
 
       def front
-        @front
+        markdown.render(@front)
       end
 
       def back
-        @back
+        markdown.render(@back)
       end
 
       def deck_path
         @deck_path
+      end
+
+      def markdown
+        @markdown ||= (
+          Redcarpet::Markdown.new(PygmentizeHTML, fenced_code_blocks: true )
+        )
+      end
+
+      class PygmentizeHTML < Redcarpet::Render::HTML
+        def initialize(extensions = {})
+          super extensions.merge(link_attributes: { target: "_blank" })
+        end
+
+        def block_code(code, language)
+          language = :javascript if language == "json"
+          language = :bash unless language
+          require 'pygmentize'
+          Pygmentize.process(code, language)
+        end
       end
 
     end
