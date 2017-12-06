@@ -1,10 +1,38 @@
-<h1><%= @decks.length %></h1>
-<% @decks.each do |deck| %>
-  <p>Name : <%= deck.name %></p>
-  <p>Slug : <%= deck.slug %></p>
-  <p>Path : <%= deck.path %></p>
-  <%= link_to "Show", deck_path(deck.path)  %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="flashcard-syllabus-module-header">
+        <div class="flashcard-syllabus-module-title">
+          <h2>All Flashcards</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row flashcards-syllabus-module">
+    <% @decks.each do |deck| %>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+        <%= link_to deck_path(deck.path), class:"deck-link" do %>
+          <div class="deck hoverable-deck">
+            <div class="card-front">
+              <h3 class="card-title"><%= deck.name %></h3>
+              <p class="card-description"><%= deck.set_card.length %> cards</p>
+
+              <div class="percentage">
+                <span><%= deck.score.ceil %>%</span>
+              </div>
+                <div class="progress card-progress">
+                  <div class="mastered-progress-bar" style="width: <%= deck.score %>%;"></div>
+                  <div class="not-mastered-progress-bar" style="width: <%= 100 - deck.score %>%;"></div>
+                </div>
+            </div>
+            <div class="card-back-one"></div>
+            <div class="card-back-two"></div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
 

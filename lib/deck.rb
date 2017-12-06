@@ -83,6 +83,16 @@ class SetDeck
       return @unplayed_cards
     end
 
+    def score
+      played_cards.length
+      set_card.length
+      if !played_cards.empty?
+        return played_cards.length.fdiv(set_card.length)*100
+      else
+        return played_cards.length
+      end
+    end
+
     def delete_played_cards
       self.played_cards.destroy_all
     end

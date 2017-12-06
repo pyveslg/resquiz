@@ -1,0 +1,270 @@
+.flashcard-syllabus-module-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 20px 0 22px 0;
+    width: 100%
+}
+
+.flashcard-syllabus-module-header .flashcard-syllabus-module-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.flashcard-syllabus-module-header .flashcard-syllabus-module-title svg {
+    height: 22px;
+    margin-right: 15px
+}
+
+.flashcard-syllabus-module-header .flashcard-syllabus-module-title h2 {
+    margin-bottom: 0
+}
+
+.flashcard-syllabus-module-header .shuffle-link {
+    color: #888888;
+    font-size: 16px;
+    font-weight: 500
+}
+
+.flashcards-syllabus-module {
+    padding-bottom: 2rem
+}
+
+.deck-link:hover {
+    text-decoration: none
+}
+
+.deck {
+    position: relative
+}
+
+.deck .card-front {
+    width: 150px;
+    height: 220px;
+    margin: 10px 0;
+    position: relative;
+    background-color: white;
+    border: 0.5px solid #D3D3D3;
+    padding: 10px;
+    border-radius: 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 3
+}
+
+.deck .card-front .card-title {
+    text-align: center;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 10px
+}
+
+.deck .card-front .card-description {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 200
+}
+
+.deck .card-front svg {
+    height: 14px;
+    position: absolute;
+    top: 10px;
+    left: 10px
+}
+
+.deck .card-front .card-ribbon {
+    position: absolute;
+    top: 10px;
+    right: -22px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    width: 90px
+}
+
+.deck .card-front .card-ribbon .horizontal-text:before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.deck .card-front .card-ribbon-success {
+    background-color: #22C3B5
+}
+
+.deck .card-front .card-ribbon-danger {
+    background-color: #D23333
+}
+
+.deck .card-front .percentage {
+    padding: 0px 6px;
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    color: #747474;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px;
+    background: #EAEAEA
+}
+
+.deck .card-front .percentage-finished {
+    padding: 0px 6px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #747474;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px;
+    background: #EAEAEA
+}
+
+.deck .card-front .card-progress {
+    background-color: #EAEAEA;
+    border-radius: 0px 0px 1px 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px
+}
+
+.deck .card-front .card-progress .mastered-progress-bar {
+    background-color: #22C3B5;
+    opacity: 0.7
+}
+
+.deck .card-front .card-progress .not-mastered-progress-bar {
+    background-color: #D23333;
+    opacity: 0.7
+}
+
+.deck .card-back-one {
+    width: 150px;
+    height: 220px;
+    background-color: white;
+    border: 0.5px solid #D3D3D3;
+    border-radius: 2px;
+    z-index: 2
+}
+
+.deck .card-back-two {
+    width: 150px;
+    height: 220px;
+    background-color: white;
+    border: 0.5px solid #D3D3D3;
+    border-radius: 2px;
+    z-index: 1;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05)
+}
+
+.card-locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 220px;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.65);
+    opacity: 0.6;
+    color: white
+}
+
+.card-locked i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px
+}
+
+.locked-deck {
+    opacity: .2
+}
+
+.hoverable-deck .card-back-one {
+    position: absolute;
+    bottom: -1px;
+    left: 2px;
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+.hoverable-deck .card-back-two {
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transition: .5s;
+    transition: .5s;
+    position: absolute;
+    bottom: -2px;
+    left: 4px
+}
+
+.hoverable-deck:hover .card-back-one {
+    -webkit-transform: rotateZ(4deg);
+    transform: rotateZ(4deg);
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+.hoverable-deck:hover .card-back-two {
+    -webkit-transform: rotateZ(8deg);
+    transform: rotateZ(8deg);
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+.progress {
+    margin-bottom: 0;
+    margin-top: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem
+}
+
+
+tbody .progress {
+    background-color: #FFFFFF
+}
+
+tbody .progress .progress-bar {
+    color: #F7F7F7
+}
