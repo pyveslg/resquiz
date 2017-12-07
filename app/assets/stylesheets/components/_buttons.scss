@@ -1,0 +1,45 @@
+.btn {
+    font-family: "FreightSansPro", "Helvetica", "sans-serif" !important;
+    cursor: pointer
+}
+
+.btn-default {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(80%, #F5F5F5));
+    background-image: linear-gradient(-180deg, #fff 20%, #F5F5F5 80%);
+    color: #333333 !important;
+    border: .5px solid #D5D5D5
+}
+
+.btn-default:hover,.btn-default:focus,.btn-default:not([disabled]):not(.disabled):active {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #F7F7F7), color-stop(80%, #EFEFEF));
+    background-image: linear-gradient(-180deg, #F7F7F7 20%, #EFEFEF 80%);
+    border-color: #C6C6C6
+}
+
+.btn-green {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #22C3B5), color-stop(90%, #1EAB9E));
+    background-image: linear-gradient(-180deg, #22C3B5 10%, #1EAB9E 90%);
+    color: white !important;
+    border: .5px solid #1FA095
+}
+
+.btn-green:hover,.btn-green:focus,.btn-green:not([disabled]):not(.disabled):active {
+    color: #F7F7F7;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #1CA196), color-stop(90%, #19958D));
+    background-image: linear-gradient(-180deg, #1CA196 10%, #19958D 90%);
+    border-color: #1C928A
+}
+
+.btn-red {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #D23333), color-stop(90%, #A92B2B));
+    background-image: linear-gradient(-180deg, #D23333 10%, #A92B2B 90%);
+    color: white !important;
+    border: .5px solid #A92B2B
+}
+
+.btn-red:hover,.btn-red:focus,.btn-red:not([disabled]):not(.disabled):active {
+    color: #F7F7F7;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #A92B2B), color-stop(90%, #9E2E2E));
+    background-image: linear-gradient(-180deg, #A92B2B 10%, #9E2E2E 90%);
+    border-color: #9E2E2E
+}

@@ -10,19 +10,26 @@
   </div>
   <div class="row flashcards-syllabus-module">
     <% @decks.each do |deck| %>
-      <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 col-xl-2">
         <%= link_to deck_path(deck.path), class:"deck-link" do %>
           <div class="deck hoverable-deck">
             <div class="card-front">
               <h3 class="card-title"><%= deck.name %></h3>
               <p class="card-description"><%= deck.set_card.length %> cards</p>
-
+              <% if deck.score == 100 %>
+                <div class="card-ribbon card-ribbon-success">
+                  <i class="mdi mdi-checkbox-marked-circle-outline horizontal-text"></i>
+                </div>
+              <% end %>
+              <% if deck.score == 0 %>
+                <div class="card-ribbon card-ribbon-danger">to do!</div>
+              <% end %>
               <div class="percentage">
-                <span><%= deck.score.ceil %>%</span>
+                <span><%= deck.score %>%</span>
               </div>
                 <div class="progress card-progress">
-                  <div class="mastered-progress-bar" style="width: <%= deck.score %>%;"></div>
-                  <div class="not-mastered-progress-bar" style="width: <%= 100 - deck.score %>%;"></div>
+                  <div class="mastered-progress-bar" style="width: <%= deck.mastered_cards.length.fdiv(deck.set_card.length)*100 %>%;"></div>
+                  <div class="not-mastered-progress-bar" style="width: <%= deck.unmastered_cards.length.fdiv(deck.set_card.length)*100 %>%;"></div>
                 </div>
             </div>
             <div class="card-back-one"></div>

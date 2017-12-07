@@ -75,7 +75,8 @@ class SetDeck
       @unplayed_cards = self.set_card
       self.played_cards.each do |card|
         @unplayed_cards.each do |carte|
-          if card.card_slug == carte.slug
+          if card.card_slug == carte.slug && card.mastered == true
+
             @unplayed_cards.delete(carte)
           end
         end
@@ -83,14 +84,16 @@ class SetDeck
       return @unplayed_cards
     end
 
+    def mastered_cards
+      @mastered_cards = PlayedCard.all.where("deck_path = ? and mastered", self.path)
+    end
+
+    def unmastered_cards
+      @unmastered_cards = PlayedCard.all.where("deck_path = ? and mastered = ?", self.path, false)
+    end
+
     def score
-      played_cards.length
-      set_card.length
-      if !played_cards.empty?
-        return played_cards.length.fdiv(set_card.length)*100
-      else
-        return played_cards.length
-      end
+      (self.mastered_cards.length.fdiv(self.set_card.length)*100).ceil
     end
 
     def delete_played_cards

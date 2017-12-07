@@ -1,0 +1,352 @@
+#flashcards-container {
+    background-color: #F7F7F7;
+    min-height: calc(100vh - 98px);
+    padding: 30px 0
+}
+
+#flashcards-container .flashcard-container #flashcard {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg)
+}
+
+#flashcards-container .flashcard-container #flashcard.flipped {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0)
+}
+
+#flashcards-container .flashcard-container .invisible {
+    display: none
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg)
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0)
+}
+
+#flashcards-container .flashcard-container .cardSpinner {
+    position: absolute;
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    color: #969696
+}
+
+#flashcards-container .cardSlideLeft,#flashcards-container .cardSlideRight,#flashcards-container .cardSlideIn {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+
+#flashcards-container .cardSlideLeft {
+    -webkit-animation-name: cardSlideLeft;
+    animation-name: cardSlideLeft
+}
+
+#flashcards-container .cardSlideRight {
+    -webkit-animation-name: cardSlideRight;
+    animation-name: cardSlideRight
+}
+
+#flashcards-container .cardSlideIn {
+    -webkit-animation-name: cardSlideIn;
+    animation-name: cardSlideIn
+}
+
+@-webkit-keyframes cardSlideRight {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+
+    100% {
+        -webkit-transform: translate(300%, 0);
+        transform: translate(300%, 0)
+    }
+}
+
+@keyframes cardSlideRight {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+
+    100% {
+        -webkit-transform: translate(300%, 0);
+        transform: translate(300%, 0)
+    }
+}
+
+@-webkit-keyframes cardSlideLeft {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+
+    100% {
+        -webkit-transform: translate(-300%, 0);
+        transform: translate(-300%, 0)
+    }
+}
+
+@keyframes cardSlideLeft {
+    0% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+
+    100% {
+        -webkit-transform: translate(-300%, 0);
+        transform: translate(-300%, 0)
+    }
+}
+
+@-webkit-keyframes cardSlideIn {
+    0% {
+        -webkit-transform: translate(0%, -300%);
+        transform: translate(0%, -300%)
+    }
+
+    100% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+}
+
+@keyframes cardSlideIn {
+    0% {
+        -webkit-transform: translate(0%, -300%);
+        transform: translate(0%, -300%)
+    }
+
+    100% {
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%)
+    }
+}
+
+#flashcards-container .deck-stats .reset-deck-link {
+    font-size: 12px;
+    line-height: 24px
+}
+
+#flashcards-container .deck-stats .deck-stats-message p {
+    margin-bottom: 6px;
+    font-size: 18px
+}
+
+#flashcards-container .deck-stats .deck-stats-progress .progress {
+    background-color: #EAEAEA;
+    width: 100%;
+    border-radius: 3px;
+    height: 10px;
+    margin: 6px 0
+}
+
+#flashcards-container .deck-stats .deck-stats-progress .progress .mastered-progress-bar {
+    -webkit-transition: 1s;
+    transition: 1s;
+    background-color: #22C3B5;
+    opacity: 0.7
+}
+
+#flashcards-container .deck-stats .deck-stats-progress .progress .not-mastered-progress-bar {
+    -webkit-transition: 1s;
+    transition: 1s;
+    background-color: #D23333;
+    opacity: 0.7
+}
+
+#flashcards-container .flashcard-game-card {
+    padding: 15px 30px;
+    margin: 10px 0;
+    border: 1px solid #ECECEC;
+    border-radius: 3px;
+    min-height: 250px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header {
+    margin-bottom: 14px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header .flashcard-game-card-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header .flashcard-game-card-title h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+    font-family: "Kievit", "Helvetica", "sans-serif"
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header .flashcard-game-card-title svg {
+    fill: #474545;
+    opacity: 0.6;
+    width: 20px;
+    margin-right: 8px
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header .flashcard-game-card-controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-header .flashcard-game-card-controls .flashcard-game-card-controls-icon {
+    font-size: 18px;
+    text-decoration: none;
+    opacity: 0.6;
+    padding: 4px
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-content {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-content p,#flashcards-container .flashcard-game-card .flashcard-game-card-content li {
+    font-size: 16px;
+    color: #606060;
+    letter-spacing: 0
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-content a {
+    color: #469AE0;
+    font-family: "FreightSansPro", "Helvetica", "sans-serif"
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-content img {
+    width: 100%
+}
+
+#flashcards-container .flashcard-game-card .flashcard-game-card-content textarea {
+    width: 100%;
+    font-size: 14px;
+    resize: none;
+    font-weight: lighter;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    margin-bottom: 10px
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-guess p {
+    font-size: 15px
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-guess p:first-child {
+    margin-bottom: 0 !important
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-guess #user-guess-render {
+    white-space: pre-wrap
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons .flashcard-submit {
+    margin: 0 10px;
+    font-weight: 100;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: white;
+    opacity: 0.8
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons .flashcard-submit i {
+    margin: 0 5px;
+    font-size: 14px
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons .flashcard-submit:hover {
+    opacity: 1
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons .flashcard-submit.btn-mastered {
+    background-color: #22C3B5
+}
+
+#flashcards-container .flashcard-container .flashcard-game-card-action-buttons .flashcard-submit.btn-not-mastered {
+    background-color: #D23333
+}
