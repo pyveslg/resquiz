@@ -33,7 +33,7 @@ class PlayedCardsController < ApplicationController
   end
 
   def redirect
-    @deck = SetDeck.new(URL).deck(@played_card.deck_path)
+    @deck = SetDeck.new.deck(@played_card.deck_path)
     @selected_card = @deck.find(@played_card.card_slug)
     @unplayed_cards = @deck.unplayed_cards
     reinsert_unmastered_cards_in_unplayed_cards
@@ -44,7 +44,4 @@ class PlayedCardsController < ApplicationController
       redirect_to flashcard_path(slug: @next_card.slug, path: @next_card.deck_path)
     end
   end
-  CLIENT_ID = ENV['GH_BASIC_CLIENT_ID']
-  CLIENT_SECRET = ENV['GH_BASIC_SECRET_ID']
-  URL = "https://api.github.com/repos/pyveslg/MFE/contents/decks?client_id=#{CLIENT_ID}&client_secret=#{CLIENT_SECRET}"
 end

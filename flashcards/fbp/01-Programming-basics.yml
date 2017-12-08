@@ -1,0 +1,301 @@
+deck_slug: "programming_basics"
+deck_name: "Programming Basics"
+path: "01-Programming-basics"
+cards:
+  - slug: irb
+    key_concept: false
+    front: "What is IRB?"
+    back: |
+      IRB means Interactive Ruby Interpreter, it's a playground where you can run some code in Ruby.
+
+      You just have to type `irb` in the terminal to open a session, and `exit` when you're done.
+
+      Be careful, once you `exit` an `irb` session, everything you computed during the session is lost!
+  - slug: run_code
+    key_concept: true
+    front: "How do you run a ruby file in the terminal?"
+    back: |
+      ```ruby
+      ruby path/to/your/file.rb
+      ```
+  - slug: built_in_ruby_objects
+    key_concept: true
+    front: "Do you know the 7 most used ruby built-in objects?"
+    back: |
+      String like `"Hello World"`
+
+      Fixnum like `12`
+
+      Float  like `3.14`
+
+      Array like `["Hello World", 12, 3.14]`
+
+      TrueClass like `true`
+
+      FalseClass like `false`
+
+      Range like `(1..100)`
+  - slug: call_method_on_string
+    key_concept: true
+    front: "How do you call a method on a string?"
+    back: |
+      ```ruby
+      "Hello World".upcase
+
+      # => "HELLO WORLD"
+      ```
+  - slug: dot_class
+    key_concept: false
+    front: "What method can you call on an object to determine its type (String, Fixnum, Array...)?"
+    back: |
+      You can call `#class` built-in method on it:
+
+      ```ruby
+      "Hello world".class             #=> String
+      "12".class                      #=> String
+      12.class                        #=> Fixnum
+      3.14.class                      #=> Float
+      ["Sponge Bob", 12, 3.14].class  #=> Array
+      ```
+  - slug: interpolation
+    key_concept: true
+    front: "What is interpolation and how do you use it?"
+    back: |
+      When using double quotes in ruby, you can use interpolation that allows you to insert code into strings. The code will be replaced by it's result.
+
+      ```ruby
+      "4 + 3 = #{4+3}"
+      # => "4 + 3 = 7"
+      ```
+
+      or
+
+      ```ruby
+      name = "Toto"
+      "My name is #{name}"
+      # => "My name is Toto"
+      ```
+  - slug: quotes
+    key_concept: false
+    front: "What\'s the main difference between single quotes `\'` and double quotes `\"`?"
+    back: |
+      You can only interpolate between double quotes:
+
+      ```ruby
+      'two: #{1 + 1}'      #=> "two: #{1 + 1}"
+      "two: #{1 + 1}"      #=> "two: 2"
+      ```
+  - slug: to_i
+    key_concept: false
+    front: "How do you convert a `String` into a `Fixnum`?"
+    back: |
+      You can call `#to_i` on it:
+
+      ```ruby
+      "42".to_i         #=> 42
+      "42".to_i.class   #=> Fixnum
+      ```
+
+      Note that `#to_i` returns `0` if the string on which it is called cannot be interpreted as a number:
+
+      ```ruby
+      "hello".to_i   #=> 0
+      ```
+  - slug: to_i_advanced
+    key_concept: false
+    front: |
+      What does `"14".to_i` return?
+    back: |
+      It returns the fixnum `14` (converted from the string `"14"`), on which we can now do some mathematics operations.
+  - slug: to_s
+    key_concept: false
+    front: "How do you convert a `Fixnum` into a `String`?"
+    back: |
+      You can call `#to_s` on it:
+
+      ```ruby
+      42.to_s         #=> "42"
+      42.to_s.class   #=> String
+      ```
+  - slug: odd_or_even
+    key_concept: false
+    front: "How can you tell if a `Fixnum` is odd or even?"
+    back: |
+      You can call `#odd` or `#even` built-in methods on it:
+
+      ```ruby
+      12.even?    #=> true
+      12.odd?     #=> false
+      ```
+  - slug: modulo
+    key_concept: false
+    front: "What operator can you use on a `Fixnum` to compute the rest of its euclidian division by any number?"
+    back: |
+      You can use `%` (`modulo`) operator:
+
+      ```ruby
+      12 % 3    #=> 0
+      12 % 5    #=> 2
+      ```
+  - slug: divide
+    key_concept: false
+    front: "How do you compute a division on a `Fixnum`?"
+    back: |
+      You can use `/` or `fdiv` depending on the type of result you expect:
+
+      ```ruby
+      # euclidian division
+      12 / 5               #=> 2
+      (12 / 5).class       #=> Fixnum
+
+      # decimal division
+      12.fdiv(5)           #=> 2.4
+      (12.fdiv(5)).class   #=> Float
+      ```
+  - slug: to_a
+    key_concept: false
+    front: "What does `(1..10).to_a` return?"
+    back: |
+      It returns an array with 10 elements, starting from 1 and finishing at 10.
+      If we used the range `(1...10)`, it would have created 9 elements (1 to 9), because the 3rd dot means we exclude the last element.
+  - slug: array_size
+    key_concept: true
+    front: "How can you get the number of items contained in an array?"
+    back: |
+      You can call `#size`, `#length` or `#count` on the array
+
+      ```ruby
+      ["John", "Paul", "George", "Ringo"].size   #=> 4
+      ```
+  - slug: sort_array
+    key_concept: false
+    front: "How can you sort an array?"
+    back: |
+      You can call `#sort` on the array:
+
+      ```ruby
+      ["John", "Paul", "George", "Ringo"].sort    #=> ["George", "John", "Paul", "Ringo"]
+      [2, 1, 3].sort                              #=> [1, 2, 3]
+
+      ```
+  - slug: strings_array_shortcut
+    key_concept: false
+    front: "Do you know a shortcut to define an array of strings?"
+    back: |
+      There are three ways you can define an array of strings without typing quotes
+
+      ```ruby
+      %w[Huey Dewey Louie]  #=> ["Huey", "Dewey", "Louie"]
+      %w(Huey Dewey Louie)  #=> ["Huey", "Dewey", "Louie"]
+      %w{Huey Dewey Louie}  #=> ["Huey", "Dewey", "Louie"]
+      ```
+  - slug: upcase_or_capitalize
+    key_concept: false
+    front: "What's the difference between `#upcase` and `#capitalize` strings built-in methods?"
+    back: |
+      `#capitalize` returns a string with a capital first letter, whereas `#upcase` returns a string fully upcased:
+
+      ```ruby
+      "boris".capitalize  #=> "Boris"
+      "boris".upcase      #=> "BORIS"
+      ```
+  - slug: split
+    key_concept: false
+    front: "Do you know how to split a `String` sentence into an `Array` of words?"
+    back: |
+      You can call `#split` on the `string`:
+
+      ```ruby
+      "All you need is code".split      #=> ["All", "you", "need", "is", "code"]
+
+      # equivalent to
+      "All you need is code".split(" ") #=> ["All", "you", "need", "is", "code"]
+
+      # you can specify the separator as an argument...
+      "boris@lewagon.org".split("@")    #=> ["boris", "lewagon.org"]
+
+      # ... if it's an empty string #split will return an array of characters
+      "boris".split("")                 #=> ["b", "o", "r", "i", "s"]
+      ```
+  - slug: variable_def
+    key_concept: true
+    front: "What is a variable? How do you use them?"
+    back: |
+      A variable is like a container, you can put anything you want in it.
+      A variable is handy because you can re-use it and have access to its content.
+      You can also change its content whenever you want.
+      ex:
+
+      ```ruby
+      a = 8
+      puts "my var = #{a}"
+      #=> "my var = 8"
+
+      a = a + 2
+      puts "my var = #{a}"
+      #=> "my var = 10"
+      ```
+  - slug: method_def
+    key_concept: true
+    front: "What is a method? How do you define and use them?"
+    back: |
+      Methods allow you to factorise some code so you don't have to repeat it anytime you want to run it.
+
+      ex:
+
+      ```ruby
+      def next_week
+        next_week_date = Date.today + 7
+        return next_week_date.strftime("%B %d")
+      end
+
+      puts next_week()
+      ```
+
+      Don't forget, it begins with `def`, then the name of the method, following by the body that is **indented** and then the keyword `end`.
+      The parenthesis to call the method are optionnal.
+  - slug: return
+    key_concept: false
+    front: "What happens if you ommit the `return` keyword at the end of a method?"
+    back: "The last instruction of the method is returned automatically"
+  - slug: methods_parameters
+    key_concept: false
+    front: "How do you send data to methods?"
+    back: |
+      Using arguments and parameters:
+
+      ```ruby
+      def new_bookmark_page(current_page, pages_read)
+        return current_page + pages_read
+      end
+
+      new_bookmark_page(235, 38)
+      ```
+
+      `235` and `38` are **arguments** that are passed to the method
+
+      `current_page` and `pages_read` are called **parameters**.
+  - slug: methods_ending_with_question_mark
+    key_concept: false
+    front: "Do you know what a `?` at the end of a method name means?"
+    back: |
+      The method will return true or false, like `42.even?`
+
+      You can use this convention in your own methods.
+  - slug: methods_ending_with_exclamation_mark
+    key_concept: false
+    front: "Do you know what a `!` at the end of a method name means?"
+    back: |
+      The method will modify permanently the value stored in the variable.
+
+      ex:
+
+
+      ```ruby
+      text = "Hello World"
+      text.upcase!
+      text
+      # => "HELLO WORLD"
+      ```
+
+      We call those methods **destructive**, and the `!` is there to remind you they're dangerous!

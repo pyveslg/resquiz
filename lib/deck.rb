@@ -2,65 +2,33 @@ require "redcarpet"
 require_relative "./deep_symbolize"
 
 class SetDeck
-  def initialize(url)
-    @url = url
-  end
-
-  def file_content
-    json_content = JSON.parse(open(@url).read)
-    decks = []
-    json_content.each_with_index do |deck, i|
-      file_content_url = json_content[i]['download_url']
-      yml_content = open(file_content_url).read
-      file_content = YAML.load(yml_content)
-      decks.push(file_content)
-    end
-    decks
-  end
-
-  def all
-    total = []
-    file_content.each do |deck|
-      deck_slug = deck["deck_slug"]
-      deck_name = deck["deck_name"]
-      path = deck["path"]
-      cards = deck["cards"]
-      total.push(Deck.new(deck_slug, deck_name, path, cards))
-    end
-    total
-  end
-
-
   class Deck
-    def initialize(deck_slug, deck_name, path, cards)
-      @deck_slug = deck_slug
-      @deck_name = deck_name
-      @path = path
-      @cards = cards
+    def initialize(file)
+      @file = load_file(file)
     end
 
     def slug
-      @deck_slug
+      @deck_slug = @file[:deck_slug]
     end
 
     def name
-      @deck_name
+      @deck_name = @file[:deck_name]
     end
 
     def path
-      @path
+      @path = @file[:path]
     end
 
     def cards
-      @cards
+      @cards = @file[:cards]
     end
 
     def set_card
-      cards = []
+      cartes = []
       self.cards.each_with_index do |card, index|
-        cards.push(Card.new(index, self.path, card["slug"], card["key_concept"], card["front"], card["back"]))
+        cartes.push(Card.new(index, self.path, card[:slug], card[:key_concept], card[:front], card[:back]))
       end
-      return cards
+      return cartes
     end
 
     def find(card_slug)
@@ -98,6 +66,14 @@ class SetDeck
 
     def delete_played_cards
       self.played_cards.destroy_all
+    end
+
+    private
+
+    def load_file(file)
+      hash = YAML::load_file(file)
+      hash.extend DeepSymbolizable
+      hash.deep_symbolize { |key| key }
     end
 
     class Card
@@ -155,12 +131,27 @@ class SetDeck
     end
   end
 
-
   def deck(path)
-    file_content.each do |file|
-      return Deck.new(file["deck_slug"], file["deck_name"], file["path"], file["cards"]) if file["path"].include?(path)
+    selected_deck = []
+    all.each do |deck|
+      if deck.path == path
+        selected_deck.push(deck)
+      end
     end
-    nil
+    selected_deck.first
   end
+
+  def all
+    files.map do |file|
+      Deck.new(file)
+    end
+  end
+
+  private
+
+  def files
+    Dir["#{File.dirname(__FILE__)}/../flashcards/fbp/*.yml"]
+  end
+
 
 end

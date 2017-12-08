@@ -1,0 +1,206 @@
+deck_slug: "terminal-and-git"
+deck_name: "Terminal and Git"
+path: "00-Setup"
+cards:
+  - slug: where_am_i
+    key_concept: false
+    front: "Ce n'est pas génial ça ?"
+    back: |
+      ```bash
+      Siiiiiiiiiiiii !
+      ```
+
+  - slug: where_can_i_go
+    key_concept: false
+    front: "How do you print in the terminal the list of folders and files in current directory"
+    back: |
+      ```bash
+      ls
+      ```
+
+      or
+
+      ```bash
+      ll
+      ```
+
+      (alias of `ls -lh`)
+  - slug: cd_basic
+    key_concept: true
+    front: "How do you go from current directory to a child folder?"
+    back: |
+      ```bash
+      cd <folder_name>
+      ```
+
+      Tip: don't forget you can autocomplete with `TAB`
+  - slug: cd_back
+    key_concept: false
+    front: "How do you go from current directory to parent folder?"
+    back: |
+      ```bash
+      cd ..
+      ```
+  - slug: cd_advanced
+    key_concept: false
+    front: "How do you go from current directory to any folder?"
+    back: |
+      ```bash
+      cd <path_to_folder>
+      ```
+
+      ex:
+
+      ```bash
+      cd ../Eschults/lovely-hood
+      ```
+
+      Tip: don't forget you can autocomplete with `TAB`
+  - slug: cd_home
+    key_concept: false
+    front: "How do you go back to your computer's home directory?"
+    back: |
+      ```bash
+      cd
+      ```
+  - slug: up_arrow
+    key_concept: false
+    front: "How can you retrieve a command you recently typed in your terminal?"
+    back: "Press `↑` up arrow until you retrieve it"
+  - slug: current_directory
+    key_concept: false
+    front: "In the terminal, what does `.` refer to?"
+    back: "To current directory"
+  - slug: parent_directory
+    key_concept: false
+    front: "In the terminal, what does `..` refer to?"
+    back: "To parent directory, and you can `cd` to it"
+  - slug: create_directory
+    key_concept: true
+    front: "How do you create a folder in current directory?"
+    back: |
+      ```bash
+      mkdir <folder_name>
+      ```
+
+      ex:
+
+      ```bash
+      mkdir restaurants
+      ```
+  - slug: create_file
+    key_concept: true
+    front: "How do you create a file in current directory?"
+    back: |
+      ```bash
+      touch <file_name>
+      ```
+
+      ex:
+
+      ```bash
+      touch program.rb
+      ```
+  - slug: open_sublime
+    key_concept: false
+    front: "How do you open your project in Sublime Text?"
+    back: |
+      ```bash
+      stt
+      ```
+
+      (alias of `stt .`)
+  - slug: git
+    key_concept: false
+    front: "What is git?"
+    back: |
+      Git is a version control system: it helps you track changes in your code and save versions of it. With Git you can also share your code with collaborators.
+
+      [Learn more](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
+  - slug: github
+    key_concept: false
+    front: "What is GitHub?"
+    back: |
+      GitHub is a service for developers to host code and their versions (under git management). It makes easier code sharing and collaborating. You can find a lot of open source projects on it.
+
+      [Learn more](https://en.wikipedia.org/wiki/GitHub)
+  - slug: create_git_repo
+    key_concept: true
+    front: "How do you create a new git repository locally from an existing repo (on Github for instance)?"
+    back: |
+      ```bash
+      git clone <github_ssh_clone_url>
+      ```
+  - slug: create_git_repo_from_scratch
+    key_concept: true
+    front: "How do you create a new git repository locally from scratch?"
+    back: |
+      ```bash
+      mkdir new_project
+      cd new_project
+      git init
+      ```
+  - slug: git_status
+    key_concept: false
+    front: "How can you tell if you have uncommitted changes in your project?"
+    back: |
+      ```bash
+      git status
+      ```
+
+      shortcut:
+
+      ```bash
+      gst
+      ```
+
+      This will list the files you have changed since you last committed them on git.
+  - slug: git_commit
+    key_concept: true
+    front: "How do you commit your changes on git?"
+    back: |
+      It's a 3-step job:
+
+      ```bash
+      # First check which files have been modified
+      git status
+
+      # Then, add them to the staging area.
+      git add <file_1_which_has_been_modified>
+      git add <file_2_which_has_been_modified>
+
+      # Take a snapshot of what is in the staging area.
+      git commit --message "A meaningful message about this change"
+      ```
+  - slug: git_diff
+    key_concept: false
+    front: "How do you inspect the detailed changes of the modified files identified with `git status` ?"
+    back: |
+      ```bash
+      git diff
+      git diff <a_specific_file_or_folder>
+      ```
+  - slug: git_log
+    key_concept: false
+    front: "How do you print the history of the commits of your repository?"
+    back: |
+      ```bash
+      git log
+      ```
+
+      or
+
+      ```bash
+      git lg
+      ```
+  - slug: git_push
+    key_concept: true
+    front: "How do you push your code on Github?"
+    back: |
+      ```bash
+      # Generic command
+      git push <remote> <branch>
+
+      # What we'll use
+      git push origin master
+      ```
